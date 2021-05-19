@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 from sqlalchemy.orm import backref
-from flask_login import LoginManager, UserMixin, login_required, login_user
+from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
@@ -94,6 +94,12 @@ def login():
       login_user(user)
       return redirect(url_for("home"))
 
+   return render_template("login.html")
+
+@login_required
+@app.route('/logout')
+def logout():
+   logout_user()
    return render_template("login.html")
 
 if __name__ == '__main__':
