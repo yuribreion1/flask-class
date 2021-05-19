@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 from sqlalchemy.orm import backref
@@ -83,13 +83,12 @@ def login():
       password = request.form["password"]
 
       user = User.query.filter_by(email=email).first()
-      errors = {}
 
       if not user:
-         errors["error"] = "Invalid credentials"
+         flash("Invalid credentials")
          return redirect("login.html")
       if not check_password_hash(user.password, password):
-         errors["error"] = "Invalid credentials"
+         flash("Invalid credentials")
          return redirect("login.html")
 
       login_user(user)
