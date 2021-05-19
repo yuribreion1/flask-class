@@ -1,0 +1,27 @@
+{% extends 'bootstrap/base.html' %} {% block content %}
+
+<body class="container">
+    <h1 class="display-1">Lista de usuários</h1>
+
+    <table class="table">
+        <thead>
+            <th>Name</th>
+            <th>Name</th>
+            <th>E-mail</th>
+            <th>Photo</th>
+            <th>Delete?</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.profile.photo }}</td>
+                <td><a href="{{ url_for('delete_user', id=user.id) }}">Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/users">Voltar a lista de usuários</a>
+</body>
+
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'bootstrap/base.html' %} {% block content %}
+
+<body class="container">
+    <h1 class="display-1">Lista de usuários</h1>
+
+    <table class="table">
+        <thead>
+            <th>Name</th>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td><a href="{{ url_for('get_user', id=user.id) }}">{{ user.name }}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/">Voltar para pagina inicial</a>
+</body>
+
+{% endblock content %}
