@@ -3,12 +3,11 @@
 <body class="container">
     <h1 class="display-1">User management tool</h1>
     <hr>
-<ul>
-    <li><a href="/users">List of users</a></li>
-</ul>
-<ul>
-    <li><a href="/register">Register new user</a></li>
-</ul>
+    <nav>
+        <a href="{{ url_for('register_user') }}">Register</a>
+        <a href="{{ url_for('get_users') }}">List of users</a>
+        <a href="{{ url_for('logout') }}">Sair</a>
+    </nav>
 </body>
 
 
